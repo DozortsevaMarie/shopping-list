@@ -10,7 +10,7 @@ import {
 } from "../../redux/mainPageReducer";
 
 const MyShoppingLists = (props) => (
-    <>
+    <div className={styles.wrapper}>
       <h1>Сохранённые списки покупок</h1>
       {props.savedLists.length > 0 ? (
           <div className={styles.siteCardBorderLessWrapper}>
@@ -24,7 +24,7 @@ const MyShoppingLists = (props) => (
       ) : (
           <Empty description="Сохранённых списков нет" />
       )}
-    </>
+    </div>
 );
 
 const mapStateToProps = ({ mainPageReducer }) => ({
