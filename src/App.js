@@ -10,6 +10,7 @@ import ProfileContainer from "./pages/Profile/ProfileContainer";
 import { connect } from "react-redux";
 import CreateList from "./pages/CreateList/CreateList";
 import Header from "./components/Header/Header";
+import DrawerComponent from "./components/Drawer/Drawer";
 
 const MyShoppingLists = React.lazy(() =>
   import("./pages/MyShoppingLists/MyShoppingLists")
@@ -20,7 +21,10 @@ function App(props) {
   return (
     <div className={styles.wrapper}>
       <Header />
+      <div className={styles.navbar}>
       <NavBar />
+      </div>
+      <DrawerComponent/>
       <div className={styles.content}>
         <Route path={"/create-list"} component={CreateList} />
         <Route path={"/profile"} component={ProfileContainer} />
