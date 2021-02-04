@@ -11,6 +11,7 @@ import { connect } from "react-redux";
 import CreateList from "./pages/CreateList/CreateList";
 import Header from "./components/Header/Header";
 import DrawerComponent from "./components/Drawer/Drawer";
+import StartPage from "./components/StartPage/StartPage";
 
 const MyShoppingLists = React.lazy(() =>
   import("./pages/MyShoppingLists/MyShoppingLists")
@@ -22,10 +23,11 @@ function App(props) {
     <div className={styles.wrapper}>
       <Header />
       <div className={styles.navbar}>
-      <NavBar />
+        <NavBar />
       </div>
-      <DrawerComponent/>
+      <DrawerComponent />
       <div className={styles.content}>
+        <Route exact path={"/shopping-list-deploy/"} component={StartPage} />
         <Route path={"/create-list"} component={CreateList} />
         <Route path={"/profile"} component={ProfileContainer} />
         <Switch>
