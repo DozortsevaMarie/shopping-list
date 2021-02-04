@@ -11,58 +11,60 @@ import { connect } from "react-redux";
 import CreateList from "./pages/CreateList/CreateList";
 import Header from "./components/Header/Header";
 import DrawerComponent from "./components/DrawerComponent/DrawerComponent";
+import StartPage from "./components/StartPage/StartPage";
 
 const MyShoppingLists = React.lazy(() =>
-  import("./pages/MyShoppingLists/MyShoppingLists")
+    import("./pages/MyShoppingLists/MyShoppingLists")
 );
 const Login = React.lazy(() => import("./pages/Login/Login"));
 
 function App(props) {
-  return (
-    <div className={styles.wrapper}>
-      <Header />
-      <div className={styles.navbar}>
-      <NavBar />
-      </div>
-      <DrawerComponent/>
-      <div className={styles.content}>
-        <Route path={"/create-list"} component={CreateList} />
-        <Route path={"/profile"} component={ProfileContainer} />
-        <Switch>
-          <Route
-            exact
-            path={"/lists"}
-            render={() => (
-              <React.Suspense fallback={<div>Loading...</div>}>
-                <MyShoppingLists />
-              </React.Suspense>
-            )}
-          />
-          <Route path={`/lists/:id?`}>
-            {props.savedLists.length !== 0 ? (
-              <ListContainer />
-            ) : (
-              <Redirect to={"/lists"} />
-            )}
-          </Route>
-        </Switch>
-        <Route path={"/about"} component={AboutUs} />
-        <Route path={"/settings"} component={Settings} />
-        <Route
-          path={"/login"}
-          render={() => (
-            <React.Suspense fallback={<div>Loading...</div>}>
-              <Login />
-            </React.Suspense>
-          )}
-        />
-      </div>
-    </div>
-  );
+    return (
+        <div className={styles.wrapper}>
+            <Header />
+            <div className={styles.navbar}>
+                <NavBar />
+            </div>
+            <DrawerComponent/>
+            <div className={styles.content}>
+                <Route exact path={"/shopping-list-deploy/"} component={StartPage}/>
+                <Route path={"/create-list"} component={CreateList} />
+                <Route path={"/profile"} component={ProfileContainer} />
+                <Switch>
+                    <Route
+                        exact
+                        path={"/lists"}
+                        render={() => (
+                            <React.Suspense fallback={<div>Loading...</div>}>
+                                <MyShoppingLists />
+                            </React.Suspense>
+                        )}
+                    />
+                    <Route path={`/lists/:id?`}>
+                        {props.savedLists.length !== 0 ? (
+                            <ListContainer />
+                        ) : (
+                            <Redirect to={"/lists"} />
+                        )}
+                    </Route>
+                </Switch>
+                <Route path={"/about"} component={AboutUs} />
+                <Route path={"/settings"} component={Settings} />
+                <Route
+                    path={"/login"}
+                    render={() => (
+                        <React.Suspense fallback={<div>Loading...</div>}>
+                            <Login />
+                        </React.Suspense>
+                    )}
+                />
+            </div>
+        </div>
+    );
 }
 
 const mapStateToProps = (state) => ({
-  savedLists: state.mainPageReducer.savedLists,
+    savedLists: state.mainPageReducer.savedLists,
 });
 
 export default connect(mapStateToProps)(App);
