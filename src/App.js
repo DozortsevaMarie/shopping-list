@@ -10,7 +10,7 @@ import ProfileContainer from "./pages/Profile/ProfileContainer";
 import { connect } from "react-redux";
 import CreateList from "./pages/CreateList/CreateList";
 import Header from "./components/Header/Header";
-import DrawerComponent from "./components/Drawer/Drawer";
+import DrawerComponent from "./components/DrawerComponent/DrawerComponent";
 
 const MyShoppingLists = React.lazy(() =>
   import("./pages/MyShoppingLists/MyShoppingLists")
