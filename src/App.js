@@ -27,7 +27,7 @@ function App(props) {
             </div>
             <DrawerComponent/>
             <div className={styles.content}>
-                <Route exact path={"/shopping-list-deploy/"} component={StartPage}/>
+                <Route exact path={"/shopping-list"} component={StartPage}/>
                 <Route path={"/create-list"} component={CreateList} />
                 <Route path={"/profile"} component={ProfileContainer} />
                 <Switch>
